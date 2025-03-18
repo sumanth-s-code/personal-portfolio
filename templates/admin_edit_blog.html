@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {% if post %}Edit Blog Post{% else %}Add New Blog Post{% endif %} - Admin Panel
+{% endblock %}
+
+{% block content %}
+  <h2>{% if post %}Edit Blog Post{% else %}Add New Blog Post{% endif %}</h2>
+  <form method="post">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" name="title" id="title" class="form-control" placeholder="Blog post title" value="{{ post.title if post }}">
+    </div>
+    <div class="mb-3">
+      <label for="content" class="form-label">Content:</label>
+      <textarea name="content" id="content" class="form-control" rows="10" placeholder="Blog post content">{{ post.content if post }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">{% if post %}Update{% else %}Add{% endif %} Blog Post</button>
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
+
