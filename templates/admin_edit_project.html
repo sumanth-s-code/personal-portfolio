@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {% if project %}Edit Project{% else %}Add New Project{% endif %} - Admin Panel
+{% endblock %}
+
+{% block content %}
+  <h2>{% if project %}Edit Project{% else %}Add New Project{% endif %}</h2>
+  <form method="post">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" name="title" id="title" class="form-control" placeholder="Project title" value="{{ project.title if project }}">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea name="description" id="description" class="form-control" rows="5" placeholder="Project description">{{ project.description if project }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="link" class="form-label">Project Link (optional):</label>
+      <input type="text" name="link" id="link" class="form-control" placeholder="https://example.com" value="{{ project.link if project }}">
+    </div>
+    <button type="submit" class="btn btn-primary">{% if project %}Update{% else %}Add{% endif %} Project</button>
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
