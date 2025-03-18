@@ -1,0 +1,9 @@
+/* styles.css - Custom styles for the Personal Portfolio app */
+
+body {
+    padding-top: 70px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
